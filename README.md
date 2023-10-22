@@ -1,11 +1,6 @@
-### This Frontend Tempate
-- made by suhyeon
+### 실험실 of JS
+* 예외 실험 (JS의 throw에 어떤값이든 허용한다. throw로는 error생성자로 만들어진 값을 던지는것이 일반적이지만 필수는 아님.)
 
-# Before use Bun you have to [install](https://bun.sh/) Bun
-* curl https://bun.sh/install | bash 
-1. bun install - use bun => fast
-2. vite - fast
-3. fast + fast => so fast
 
 ## how to start
 1. `bun install`
