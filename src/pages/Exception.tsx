@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { exception } from '../util/exception';
+import { exception, exceptionRemoveError } from '../util/exception';
 import { css } from '@emotion/react';
 
 const Exception = (): JSX.Element => {
@@ -12,6 +12,11 @@ const Exception = (): JSX.Element => {
     } else {
       setMessage(response as string);
     }
+  };
+
+  const handleClickError2 = () => {
+    const e = exceptionRemoveError();
+    setMessage(e as string);
   };
 
   const clear = () => {
@@ -30,6 +35,9 @@ const Exception = (): JSX.Element => {
         <button onClick={() => handleClickError(false)}>make success</button>
         <button onClick={() => handleClickError(true, 'any')}>make error - any</button>
         <button onClick={() => handleClickError(true, 'error')}>make error - error</button>
+        <button onClick={handleClickError2}>
+          catch절에는 무엇이 되었건 throw문이 던진 단 한개의 인자만 받을 수 잇다.
+        </button>
       </div>
       <div>
         <p>{message == null ? 'nothing' : message}</p>

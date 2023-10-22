@@ -15,3 +15,16 @@ export const exception = async (isError: boolean, type?: 'any' | 'error') => {
     return err;
   }
 };
+
+const makeError = () => {
+  throw 'error';
+};
+
+export const exceptionRemoveError = () => {
+  try {
+    makeError();
+  } catch {
+    // err 를 무조건 안붙여도 되는거구나
+    return 'error';
+  }
+};
