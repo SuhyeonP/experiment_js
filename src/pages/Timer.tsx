@@ -8,7 +8,7 @@ const Timer = (): JSX.Element => {
   }
 
   // useEffect(() => {
-  //   timer();
+  //   timer ();
   // }, []);
 
   return (
