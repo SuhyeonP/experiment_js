@@ -43,8 +43,13 @@ const StopEvent = (): JSX.Element => {
     console.log('this is last target?', e.target, e.currentTarget);
   };
 
+  const consoleLog = (e) => {
+    console.log('this is just log');
+  }
+
   useEffect(() => {
     const ele = document.querySelector('.child3');
+    const ele13 = document.querySelector('.child13');
     const ele2 = document.querySelector('.child4');
     const ele3 = document.querySelector('.laaaast');
 
@@ -66,10 +71,15 @@ const StopEvent = (): JSX.Element => {
       ele.addEventListener('click', stopImmediatePropagation);
     }
 
+    if (ele13) {
+      ele13.addEventListener('click', consoleLog);
+    }
+
     return () => {
       ele!.removeEventListener('click', stopImmediatePropagation);
       ele2!.removeEventListener('click', stopImmediatePropagation2);
       ele3!.removeEventListener('click', tempEvent);
+      ele13!.removeEventListener('click', consoleLog);
     };
   }, []);
 
@@ -97,14 +107,16 @@ const StopEvent = (): JSX.Element => {
             </button>
             <br />
             <br />
-            <button className={'child1'} onClickCapture={preventDefault('child2')}>
+            <button className={'child1'} onClick={preventDefault('child2')}>
               preventDefault만 - a 태그는 작동 안할듯
             </button>
             <br />
             <br />
             <a href={'https://www.naver.com'} onClick={preventDefault('hi')}>
-              hi my href is not working
+              hi my href is not working - prevent default
             </a>
+            <br />
+            <br />
             <button className={'child2'} onClick={stopPropagation('child3')}>
               stopPropagation - grand grand의 a 태그의 href는 작동 (캡쳐링, 버블링이 아닌 href라서) 다른 상위에 엮인
               온클릭이벤트들은 작동안함(캡쳐링-버블링)
@@ -123,6 +135,13 @@ const StopEvent = (): JSX.Element => {
             <div
               dangerouslySetInnerHTML={{
                 __html: `<a class="child3" href="https://naver.com" target="_blank">stopImmediatePropagation - naver로만 이동 + 온클릭(child3)함수랑 - 구글로는 이동 안함</a>`,
+              }}
+            />
+            <br />
+            <br />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: `<a class="child13" href="https://naver.com" target="_blank" onclick="return false;">return false 를 해서 아무것도 이동 안 함 - 상위에 구글도 이동 안함 - 캡쳐링,버블링만 발생</a>`,
               }}
             />
             <br />
