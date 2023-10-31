@@ -33,7 +33,13 @@ const AnchorTag = (): JSX.Element => {
       <div
         dangerouslySetInnerHTML={{
           __html:
-            "<a href={`javascript:${handleClickInnerReturnUndefined('something~')}`} onClick={'return false;'}>onclick return false\n</a>",
+            `<a href=\`${handleClickInnerReturnUndefined('something~')}\ onClick={'return false;'}>onclick return false\n</a>`,
+        }}
+      />
+      <div
+        dangerouslySetInnerHTML={{
+          __html:
+            "<a href=\"" + handleClickInnerReturnUndefined('escape!!') + "\" onclick='return false;' target='_blank'>+로 연결</a>",
         }}
       />
     </>
