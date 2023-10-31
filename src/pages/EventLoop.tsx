@@ -1,8 +1,8 @@
 //const EventLoop.tsx = (): JSX.Element => {
-import { useEffect } from "react";
-import {delay, getApple, getBanana} from "../util/wait";
+import { useEffect } from 'react';
+import { delay, getApple, getBanana } from '../util/wait';
 
-export const EventLoop  = (): JSX.Element => {
+export const EventLoop = (): JSX.Element => {
   async function realPromise() {
     return 1;
   }
@@ -12,36 +12,34 @@ export const EventLoop  = (): JSX.Element => {
     await delay();
 
     const result = await Promise.resolve('끝');
-    console.log(result, 'result')
+    console.log(result, 'result');
     console.log('when!');
   }
 
   async function testFruit() {
-    let apple = getApple();
-    let banana = getBanana();
+    const apple = getApple();
+    const banana = getBanana();
 
-    console.time()
+    console.time();
 
-    let a = await apple;
-    let b = await banana;
+    const a = await apple;
+    const b = await banana;
 
-
-    console.log(a, b)
+    console.log(a, b);
     console.timeEnd();
   }
 
-  useEffect(() =>{
+  useEffect(() => {
     // main();
-    testFruit()
+    testFruit();
     // console.log(realPromise());
-  },[])
-
+  }, []);
 
   return (
     <>
       <p>EventLoop.tsx</p>
     </>
   );
-}
+};
 
 // export default EventLoop.tsx;

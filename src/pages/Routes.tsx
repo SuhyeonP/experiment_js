@@ -4,7 +4,8 @@ import Exception from 'pages/Exception';
 import Timer from 'pages/Timer';
 import AnchorTag from 'pages/AnchorTag';
 import Hooks from 'pages/Hooks';
-import { EventLoop } from "pages/EventLoop";
+import { EventLoop } from 'pages/EventLoop';
+import StopEvent from 'pages/StopEvent';
 
 export const Router = () => {
   return (
@@ -15,6 +16,7 @@ export const Router = () => {
       <Route path="/aTag" element={<AnchorTag />} />
       <Route path="/hooks" element={<Hooks />} />
       <Route path="/event-loop" element={<EventLoop />} />
+      <Route path="/stop-event" element={<StopEvent />} />
     </Routes>
   );
 };
