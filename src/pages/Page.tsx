@@ -4,9 +4,6 @@ const Page = (): JSX.Element => {
   return (
     <>
       <p>this is page</p>
-      <StopEvent />
-      <StopEvent />
-      <StopEvent />
     </>
   );
 };

@@ -7,7 +7,8 @@ const StopEvent = (): JSX.Element => {
     };
 
   const preventDefault =
-    (msg: string) => (e: React.MouseEvent<HTMLDivElement | HTMLButtonElement, globalThis.MouseEvent>) => {
+    (msg: string) =>
+    (e: React.MouseEvent<HTMLDivElement | HTMLButtonElement | HTMLAnchorElement, globalThis.MouseEvent>) => {
       e.preventDefault();
       console.log(msg, 'grandgrand로 엮인 a태그는 작동안하지만 다른 로그들은 찍힘');
     };
@@ -27,8 +28,12 @@ const StopEvent = (): JSX.Element => {
     console.log('child4 last element');
   };
 
-  const stopImmediatePropagationClick = (e: any) => {
-    e.stopImmediatePropagation();
+  const stopImmediatePropagationClick = (
+    e: Event | React.MouseEvent<HTMLDivElement | HTMLButtonElement, globalThis.MouseEvent>
+  ) => {
+    if (e instanceof Event) {
+      e.stopImmediatePropagation();
+    }
     console.log('child3-1');
   };
 
@@ -36,20 +41,26 @@ const StopEvent = (): JSX.Element => {
     window.open('https://www.naver.com');
   };
 
-  const tempEvent = e => {
+  const tempEvent = (e: Event) => {
     e.preventDefault();
     e.stopPropagation();
     e.stopImmediatePropagation();
     console.log('this is last target?', e.target, e.currentTarget);
   };
 
-  const consoleLog = (e) => {
+  const consoleLog = () => {
     console.log('this is just log');
-  }
+  };
+
+  const preventDefaultEvent = (e: Event) => {
+    e.preventDefault();
+    console.log('this is a link child 113');
+  };
 
   useEffect(() => {
     const ele = document.querySelector('.child3');
     const ele13 = document.querySelector('.child13');
+    const ele113 = document.querySelector('.child113');
     const ele2 = document.querySelector('.child4');
     const ele3 = document.querySelector('.laaaast');
 
@@ -75,11 +86,16 @@ const StopEvent = (): JSX.Element => {
       ele13.addEventListener('click', consoleLog);
     }
 
+    if (ele113) {
+      ele113.addEventListener('click', preventDefaultEvent);
+    }
+
     return () => {
       ele!.removeEventListener('click', stopImmediatePropagation);
       ele2!.removeEventListener('click', stopImmediatePropagation2);
       ele3!.removeEventListener('click', tempEvent);
       ele13!.removeEventListener('click', consoleLog);
+      ele113!.removeEventListener('click', preventDefaultEvent);
     };
   }, []);
 
@@ -141,7 +157,14 @@ const StopEvent = (): JSX.Element => {
             <br />
             <div
               dangerouslySetInnerHTML={{
-                __html: `<a class="child13" href="https://naver.com" target="_blank" onclick="return false;">return false 를 해서 아무것도 이동 안 함 - 상위에 구글도 이동 안함 - 캡쳐링,버블링만 발생</a>`,
+                __html: `<a class="child13" href="https://naver.com" target="_blank" onclick="return false;">return false 를 해서 아무것도 이동 안 함 네이버 이동도 안함 - 상위에 구글도 이동 안함 - 캡쳐링,버블링만 발생 => preventDefault랑 동일</a>`,
+              }}
+            />
+            <br />
+            <br />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: `<a class="child113" href="https://naver.com" target="_blank">preventDefault만 진행 - 버블링 발생, href 이동은 자식부터 부모까지 다 안함</a>`,
               }}
             />
             <br />
