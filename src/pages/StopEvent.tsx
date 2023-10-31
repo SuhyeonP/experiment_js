@@ -102,6 +102,9 @@ const StopEvent = (): JSX.Element => {
             </button>
             <br />
             <br />
+            <a href={'https://www.naver.com'} onClick={preventDefault('hi')}>
+              hi my href is not working
+            </a>
             <button className={'child2'} onClick={stopPropagation('child3')}>
               stopPropagation - grand grand의 a 태그의 href는 작동 (캡쳐링, 버블링이 아닌 href라서) 다른 상위에 엮인
               온클릭이벤트들은 작동안함(캡쳐링-버블링)
