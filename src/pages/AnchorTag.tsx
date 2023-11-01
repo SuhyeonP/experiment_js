@@ -28,18 +28,26 @@ const AnchorTag = (): JSX.Element => {
       <h1>(not attach js)</h1>
       <a href={handleClickInnerReturnUndefined()}>inner return string</a>
       <br />
-      <a href={handleClickInnerReturnUndefined('something~return:undefined')}>inner return string</a>
+      <a href={handleClickInnerReturnUndefined('something~return:undefined')}>inner return string1</a>
       <br />
       <div
         dangerouslySetInnerHTML={{
-          __html:
-            `<a href=\`${handleClickInnerReturnUndefined('something~')}\ onClick={'return false;'}>onclick return false\n</a>`,
+          __html: `<a href=\'${handleClickInnerReturnUndefined(
+            'something~'
+          )}' onclick=\'return false;\'>onclick return false!!!\n</a>`,
+        }}
+      />
+      <div
+        dangerouslySetInnerHTML={{
+          __html: '<a href="' + handleClickInnerReturnUndefined('escape!!') + '">기대효과</a>',
         }}
       />
       <div
         dangerouslySetInnerHTML={{
           __html:
-            "<a href=\"" + handleClickInnerReturnUndefined('escape!!') + "\" onclick='return false;' target='_blank'>+로 연결</a>",
+            '<a href="' +
+            handleClickInnerReturnUndefined('escape!!') +
+            "\" onclick='return false;' target='_blank'>+로 연결</a>",
         }}
       />
     </>
