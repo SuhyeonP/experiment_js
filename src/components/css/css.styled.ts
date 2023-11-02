@@ -111,6 +111,9 @@ export const TypeAndChildStyled = styled.div`
 
   .div3 {
     .parent1 {
+      p:first-child {
+        background: lightgreen;
+      }
       span {
         :first-of-type {
           background: lightgreen;

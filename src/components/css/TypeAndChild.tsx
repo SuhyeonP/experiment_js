@@ -47,6 +47,7 @@ export const TypeAndChild = () => {
         </div>
         <ul>
           <li>div3 - parent1 &#62; span:first-of-type (lightgreen)</li>
+          <li>div3 - parent1 &#62; p:first-child (lightgreen)</li>
           <li>div3 - parent1&#62; span:nth-last-child(2) (lightblue)</li>
           <li>div3 - parent1&#62; span:last-of-type (lavender)</li>
         </ul>
