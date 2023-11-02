@@ -6,6 +6,7 @@ import AnchorTag from 'pages/AnchorTag';
 import Hooks from 'pages/Hooks';
 import { EventLoop } from 'pages/EventLoop';
 import StopEvent from 'pages/StopEvent';
+import CSS from 'pages/Css';
 
 export const Router = () => {
   return (
@@ -17,6 +18,7 @@ export const Router = () => {
       <Route path="/hooks" element={<Hooks />} />
       <Route path="/event-loop" element={<EventLoop />} />
       <Route path="/stop-event" element={<StopEvent />} />
+      <Route path="/css" element={<CSS />} />
     </Routes>
   );
 };

@@ -48,10 +48,29 @@ function Layout({ children }: { children: ReactNode }) {
         width: 100%;
         padding: 0;
         margin: 0;
-        height: auto;
+        height: 100%;
+
+        display: table;
       `}
     >
-      <div css={css``}>{children}</div>
+      <div
+        css={css`
+          display: table-cell;
+          vertical-align: middle;
+
+          height: 80%;
+        `}
+      >
+        <div
+          css={css`
+            display: block;
+            margin: 0 auto;
+            width: 90%;
+          `}
+        >
+          {children}
+        </div>
+      </div>
     </div>
   );
 }

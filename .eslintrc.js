@@ -41,5 +41,6 @@ module.exports = {
     'react/prop-types': 'off',
     'react/display-name': 'off',
     'react/react-in-jsx-scope': 'off',
+    'react/no-unknown-property': ['error', { ignore: ['css'] }],
   },
 };
