@@ -1,4 +1,4 @@
-import StopEvent from 'pages/StopEvent';
+import StopEvent from '../components/organism/javascript/StopEvent';
 
 const Page = (): JSX.Element => {
   return (
