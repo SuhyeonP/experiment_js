@@ -47,7 +47,7 @@ jobs: # Job 설정
     runs-on: ubuntu-latest
     steps:
       - name: working now
-        run: echo "${{ github.event.commit.message }}"
+        run: echo github.event.head_commit
 
   auto-merge-check:
     needs: build-test
