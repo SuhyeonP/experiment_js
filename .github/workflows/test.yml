@@ -2,7 +2,7 @@ name: Test deploy                    # Workflow 이름
 on:
   - push
   - pull_request
-jobs:                                # Job 설정
+jobs: # Job 설정
   build:
     runs-on: ubuntu-latest
     steps:
@@ -21,3 +21,20 @@ jobs:                                # Job 설정
 
       - name: Build                   # React Build
         run: bun run build
+
+      - name: creates output
+        run: sh ./build.sh
+      - name: Pushes to another repository
+        id: push_directory
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.EXPERIMENT_VERCEL }}
+        with:
+          source-directory: 'output'
+          destination-github-username: suhyeonP
+          destination-repository-name: experiment_js
+          user-email: ${{ secrets.MY_MAIL }}
+          commit-message: ${{ github.event.commits[0].message }}
+          target-branch: main
+      - name: Test get variable exported by push-to-another-repository
+        run: echo $DESTINATION_CLONED_DIRECTORY
