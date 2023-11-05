@@ -18,6 +18,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: ${{ github.event.pull_request.number }},
+              body: '머지하겠습니다!',
               event: 'REQUEST_CHANGES',
             })
             
