@@ -1,9 +1,9 @@
 name: Are you sure
 on:
-  workflow_run: ["Build Test", "Deploy CI At Vercel"]
-  types:
-    - completed
-
+  workflow_run:
+    workflows: ["Build Test", "Deploy CI At Vercel"]
+    types:
+      - completed
 jobs:
   auto-merge-check:
     if: contains(github.event.commits[github.event.commits.length - 1].message, '/merge plz/')
