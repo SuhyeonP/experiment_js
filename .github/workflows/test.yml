@@ -51,7 +51,7 @@ jobs: # Job 설정
 
   auto-merge-check:
     needs: build-test
-    if: "endsWith(github.event.head_commit.message, 'merge plz')"
+    if: "endsWith(github.event.head_commit.message, merge plz)"
     runs-on: ubuntu-latest
     steps:
       - name: Approve PR, Merge bot comment
