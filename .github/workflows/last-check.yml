@@ -1,8 +1,10 @@
 name: Are you sure
 on:
+  workflow_dispatch:
   workflow_run:
-    workflows: [Build Test, Deploy CI At Vercel]
-    types: [completed]
+    workflows: ["Build Test", "Deploy CI At Vercel"]
+    types:
+      - completed
 jobs:
   auto-merge-check:
     runs-on: ubuntu-latest
