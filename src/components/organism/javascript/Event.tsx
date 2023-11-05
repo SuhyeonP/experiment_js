@@ -62,11 +62,6 @@ const Event = (): JSX.Element => {
     }
   }, []);
 
-  const handleClickLink = (e: React.MouseEvent) => {
-    window.open('https://www.naver.com');
-    handleClickElement(e);
-  };
-
   return (
     <EventStyled>
       <ExperimentLayout>
@@ -88,10 +83,10 @@ const Event = (): JSX.Element => {
               className={'parentATag'}
               href={'https://google.com'}
               target={'_blank'}
-              rel="noreferrer"
               data-name={'delegationGrandParent'}
               data-event={'grandParent'}
               onClick={handleClickElement}
+              rel="noreferrer"
             >
               <div
                 data-event={'parent'}
@@ -99,9 +94,17 @@ const Event = (): JSX.Element => {
                 className={'eventsWrapper'}
                 onClick={handleClickElement}
               >
-                <button data-event={'child'} data-name={'childPureLink'} onClick={handleClickLink}>
-                  버블링 모두 발생 - pure - 링크 추가 <br /> 링크는 왜 하나만 되냐고
-                </button>
+                <a
+                  data-event={'child'}
+                  data-name={'childPureLink'}
+                  onClick={handleClickElement}
+                  href={'https://naver.com'}
+                  target={'_blank'}
+                  rel="noreferrer"
+                >
+                  버블링 모두 발생 - pure - 링크 추가 - 네이버만 이동 - 상위에 감싸진건 속성으로는 안되나봉! <br />
+                  이동하고싶다면 버튼으로 변경해서 이벤트 추가해야함
+                </a>
                 <button data-event={'child'} data-name={'childPure'} onClick={handleClickElement}>
                   버블링 모두 발생 - pure
                 </button>
