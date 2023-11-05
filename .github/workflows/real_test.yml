@@ -34,12 +34,11 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github.event.head_commit.message) }}
         run: echo "$GITHUB_CONTEXT"
 
-        if : ${{ contains(github.event.head_commit.message, '[ci skip]') }}
+        if : ${{ contains(github.event.head_commit.message, 'ci skip') }}
       - name: Approve PR, Merge bot comment
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.ACTIONFLOW_TOKEN }}
-          if : ${{ contains(github.event.head_commit.message, '[ci skip]') }}
           script: |
             const pull_number = ${{ github.event.pull_request.number }}
             const hasInclude = ${{ github.event.head_commit.message }}
@@ -52,12 +51,11 @@ jobs:
             })
           
 
-        if : ${{ !contains(github.event.head_commit.message, '[ci skip]') }}
+        if : ${{ !contains(github.event.head_commit.message, 'ci skip') }}
       - name: Approve PR, Merge bot comment
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.ACTIONFLOW_TOKEN }}
-          if : ${{ contains(github.event.head_commit.message, '[ci skip]') }}
           script: |
             const pull_number = ${{ github.event.pull_request.number }}
             const hasInclude = ${{ github.event.head_commit.message }}
