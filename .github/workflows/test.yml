@@ -44,7 +44,6 @@ jobs: # Job 설정
               repo: context.repo.repo,
               pull_number: pull_number,
               body: '마지막 코멘트가 아닙니다!',
-              event: 'REQUEST_CHANGES'
             })
 
   auto-merge-check:
