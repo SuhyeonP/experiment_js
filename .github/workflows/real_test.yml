@@ -33,36 +33,17 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github.event.head_commit.message) }}
         run: echo "$GITHUB_CONTEXT"
-
-        if : ${{ contains(github.event.head_commit.message, 'ci skip') }}
-      - name: Approve PR, Merge bot comment
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.ACTIONFLOW_TOKEN }}
-          script: |
-            const pull_number = ${{ github.event.pull_request.number }}
-            const hasInclude = ${{ github.event.head_commit.message }}
-            
-            await github.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: pull_number,
-              body: 'skip 이라고',
-            })
           
 
-        if : ${{ !contains(github.event.head_commit.message, 'ci skip') }}
-      - name: Approve PR, Merge bot comment
-        uses: actions/github-script@v6
+  example_comment_pr:
+    runs-on: ubuntu-latest
+    name: An example job to comment a PR
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v2
         with:
-          github-token: ${{ secrets.ACTIONFLOW_TOKEN }}
-          script: |
-            const pull_number = ${{ github.event.pull_request.number }}
-            const hasInclude = ${{ github.event.head_commit.message }}
-            
-            await github.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: pull_number,
-              body: '진행시켜',
-            })
+          message: |
+            Hello world ! :wave:
