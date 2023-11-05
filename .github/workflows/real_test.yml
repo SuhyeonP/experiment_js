@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ !contains(github.event.head_commit.message, '[ci skip]') }}
     steps:
-      - name: Github commit
+      - name: Github commit event
         env:
-          GITHUB_COMMIT: ${{ toJson(github.event.head_commit) }}
+          GITHUB_COMMIT: ${{ toJson(github.event) }}
         run: echo "$GITHUB_COMMIT"
 
       - name: Dump GitHub context 왜 안돼
@@ -27,5 +27,10 @@ jobs:
       - name: msg check
         env:
           GITHUB_CONTEXT: ${{ github.event.head_commit.message }}
+        run: echo "$GITHUB_CONTEXT"
+
+      - name: msg check
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github.event.head_commit.message) }}
         run: echo "$GITHUB_CONTEXT"
 
