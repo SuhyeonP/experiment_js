@@ -49,7 +49,7 @@ jobs: # Job 설정
       - name: Approve PR, Merge bot comment
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.ACTIONFLOW_TOKEN }}
+          github-token: ${{ github.TOKEN }}
           script: |
             const pull_number = ${{ github.event.pull_request.number }}
             await github.rest.pulls.createReview({
