@@ -36,5 +36,5 @@ jobs: # Job 설정
           user-email: ${{ secrets.MY_MAIL }}
           commit-message: ${{ github.event.commits[0].message }}
           target-branch: main
-      - name: Test get variable exported by push-to-another-repository
+      - name: Test get variable exported by push-to-another-repository # what is this
         run: echo $DESTINATION_CLONED_DIRECTORY
