@@ -109,3 +109,28 @@ export const EventStyled = styled.div`
     }
   }
 `;
+
+export const EventLoopStyled = styled.div`
+  height: 100%;
+
+  .experiment {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .resultWrapper {
+    display: grid;
+    grid-template-rows: 3fr 2fr;
+    background: #ecf5ff;
+    row-gap: 10px;
+
+    .console,
+    .resultContent {
+      background: white;
+    }
+  }
+
+  .resultContent {
+  }
+`;

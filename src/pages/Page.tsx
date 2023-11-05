@@ -1,5 +1,3 @@
-import StopEvent from '../components/organism/javascript/StopEvent';
-
 const Page = (): JSX.Element => {
   return (
     <>
