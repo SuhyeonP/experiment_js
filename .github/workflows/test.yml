@@ -14,6 +14,9 @@ jobs: # Job 설정
           fetch-depth: 0
 
       - name: Get Commit Message
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.ACTIONFLOW_TOKEN }}
         run: |
           echo "${github.event.head_commit.message}"
 
@@ -33,7 +36,7 @@ jobs: # Job 설정
         if: failure()
         uses: actions/github-script@v6
         with:
-          github-token: ${{ github.ACTIONFLOW_TOKEN }}
+          github-token: ${{ secrets.ACTIONFLOW_TOKEN }}
           script: |
             const pull_number = ${{ github.event.pull_request.number }}
             const updated_title = `[TEST FAIL] ${{ github.event.pull_request.title }}`
