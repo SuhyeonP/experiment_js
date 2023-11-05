@@ -1,5 +1,3 @@
-import StopEvent from 'pages/StopEvent';
-
 const Page = (): JSX.Element => {
   return (
     <>

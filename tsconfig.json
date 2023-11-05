@@ -24,8 +24,8 @@
       "hook/*": [
         "hook/*"
       ],
-      "component/*": [
-        "component/*"
+      "components/*": [
+        "components/*"
       ]
     }
   },

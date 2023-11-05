@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { exception, exceptionRemoveError } from '../util/exception';
+import { exception, exceptionRemoveError } from '../../../util/exception';
 import { css } from '@emotion/react';
 
 const Exception = (): JSX.Element => {
