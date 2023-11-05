@@ -41,6 +41,15 @@ jobs: # Job 설정
               event: 'REQUEST_CHANGES'
             })
 
+  processing-work:
+    needs: build-test
+    if: "!contains(github.event.head_commit.message, 'merge plz')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: working now
+        uses: actions/checkout@v4
+        run: echo "processing work"
+
   auto-merge-check:
     needs: build-test
     if: "contains(github.event.head_commit.message, 'merge plz')"
