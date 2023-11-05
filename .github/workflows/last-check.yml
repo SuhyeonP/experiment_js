@@ -1,0 +1,33 @@
+name: Are you sure
+on:
+  workflow_run: ["Build Test", "Deploy CI At Vercel"]
+  types:
+    - completed
+
+jobs:
+  auto-merge-check:
+    if: contains(github.event.commits[github.event.commits.length - 1].message, '/merge plz/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Approwve PR, Merge bot comment
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.ACTIONFLOW_TOKEN }}
+          script: |
+            await github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: ${{ github.event.pull_request.number }},
+              event: 'REQUEST_CHANGES',
+            })
+            
+            await github.rest.pulls.merge({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: ${{ github.event.pull_request.number }},
+            })
+
+      - name: 실패시
+        if: failure()
+        run: exit 1
+
