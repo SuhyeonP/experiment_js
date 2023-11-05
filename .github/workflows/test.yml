@@ -17,7 +17,8 @@ jobs: # Job 설정
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.ACTIONFLOW_TOKEN }}
-        run: echo "${github.event.head_commit.message}"
+          script: |
+            console.log(${{ github.event.head_commit.message }})
 
       - name: Set up Bun
         uses: oven-sh/setup-bun@v1
