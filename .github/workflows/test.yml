@@ -15,8 +15,7 @@ jobs: # Job 설정
 
       - name: Get Commit Message
         run: |
-          MSG=$(git log --format=%B -n 1 ${{github.event.after}})
-          echo "::set-env name=COMMIT_MESSAGE::${MSG}"
+          echo "${github.event.head_commit.message}"
 
       - name: Set up Bun
         uses: oven-sh/setup-bun@v1
@@ -54,7 +53,7 @@ jobs: # Job 설정
       - name: Approve PR, Merge bot comment
         uses: actions/github-script@v6
         with:
-          github-token: ${{ github.TOKEN }}
+          github-token: ${{ secrets.ACTIONFLOW_TOKEN }}
           script: |
             const pull_number = ${{ github.event.pull_request.number }}
             await github.rest.pulls.createReview({
