@@ -33,6 +33,9 @@ export const NthSelectorStyled = styled.div`
           text-align: center;
         }
       }
+
+      // div > p:**-of-type: div 하위 p 요소중 n번째
+      // div > span **-child: div 하위의 **번째 자식이 span인 요소위의
       .type {
         & > p:first-of-type {
           background-color: darkseagreen;
