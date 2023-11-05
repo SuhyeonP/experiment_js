@@ -21,7 +21,7 @@ jobs:
 
       - name: contain check
         env:
-          GITHUB_CONTEXT: ${{ contains(github.event.head_commit.message, 'skip ci') }}
+          GITHUB_CONTEXT: ${{ contains(github.event.head_commit.message, 'ci skip') }}
         run: echo "GITHUB_CONTEXT"
 
       - name: msg check
