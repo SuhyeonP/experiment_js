@@ -7,7 +7,7 @@ on:
 jobs:
   auto-merge-check:
     runs-on: ubuntu-latest
-    if: ${{ contains(github.event.head_commit.message, 'merge plz') }}
+    if: contains(github.event.head_commit.message, 'merge plz')
     steps:
       - name: Approwve PR, Merge bot comment
         uses: actions/github-script@v6
