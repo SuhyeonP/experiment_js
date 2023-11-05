@@ -1,9 +1,9 @@
 name: Are you sure
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  push:
+    branches: [master]
   workflow_run:
-    workflows: ["Build Test", "Deploy CI At Vercel"]
+    workflows: [Build Test, Deploy CI At Vercel]
     types:
       - completed
 jobs:
