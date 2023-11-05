@@ -43,7 +43,7 @@ jobs:
             const pull_number = ${{ github.event.pull_request.number }}
             const hasInclude = ${{ github.event.head_commit.message }}
             
-            await github.rest.pulls.createComment({
+            await github.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: pull_number,
@@ -60,7 +60,7 @@ jobs:
             const pull_number = ${{ github.event.pull_request.number }}
             const hasInclude = ${{ github.event.head_commit.message }}
             
-            await github.rest.pulls.createComment({
+            await github.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: pull_number,
