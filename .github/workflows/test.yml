@@ -49,6 +49,7 @@ jobs: # Job 설정
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.ACTIONFLOW_TOKEN }}
+          if: ${{ !contains(github.event.head_commit.message, 'merge plz') }}
           script: |
             const pull_number = ${{ github.event.pull_request.number }}
             await github.rest.pulls.createReview({
@@ -56,7 +57,7 @@ jobs: # Job 설정
               repo: context.repo.repo,
               pull_number: pull_number,
               body: '머지 하겠습니다!',
-              event: 'REQUEST_CHANGES',
+              event: 'APPROVE'
             })
             
             await github.rest.pulls.merge({
@@ -64,10 +65,11 @@ jobs: # Job 설정
               repo: context.repo.repo,
               pull_number: pull_number,
             })
+            
 
   processing-work:
     needs: build-test
-    if: ${{ !contains(github.event.head_commit.message, 'merge plz') }}
+    if: "!contains(github.event.head_commit.message, 'merge plz')"
     runs-on: ubuntu-latest
     steps:
       - name: working now
