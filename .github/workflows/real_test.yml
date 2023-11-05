@@ -45,5 +45,7 @@ jobs:
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@v2
         with:
+          github-token: ${{ secrets.ACTIONFLOW_TOKEN }}
           message: |
             Hello world ! :wave:
+          pr_number: ${{ github.event.number }}
