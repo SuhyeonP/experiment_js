@@ -24,6 +24,10 @@ jobs: # Job 설정
       - name: Build                   # React Build test
         run: bun run build
 
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
 
       - name: 실패시
         if: failure()
