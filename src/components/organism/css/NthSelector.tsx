@@ -1,43 +1,52 @@
 import { NthSelectorStyled } from './css.styled';
 import { ExperimentLayout } from '../../molecules/layout/layout.styled';
+import { Text } from 'components/atom/text/Text';
+import { Gist } from 'components/atom/gist/Gist';
 
 export const NthSelector = (): JSX.Element => {
   return (
     <NthSelectorStyled>
       <ExperimentLayout>
         <div className={'experiment'}>
-          <div className={'div1'}>
-            <h1>Type</h1>
+          <div className={'exp1'}>
+            <Text as={'h1'}>nth-type</Text>
             <div className={'type'}>
-              <p>
-                child1: p:first-child
-                <span>span</span>
-              </p>
-              <p>child2: p:nth-child(2) color:orange - 오버랩</p>
-              <p>child3: :nth-child(3)</p>
-              <p>child4: p:nth-child(4n)</p>
-              <p>child5: &:nth-child(5)</p>
-              <p>child6: p:nth-child(4n + 2)</p>
-              <p>child7: p:last-child</p>
+              <p>p: child1</p>
+              <span>span: child2</span>
+              <span>span: child3</span>
+              <p>p: child4</p>
+              <p>p: child5</p>
+              <span>span: child6</span>
+              <p>p: child7</p>
+              <span>span: child8</span>
+              <p>p: child9</p>
             </div>
           </div>
-          <div className={'div2'}>
-            <h1>Child</h1>
+          <div className={'exp2'}>
+            <Text as={'h1'}>nth-child</Text>
             <div className={'child'}>
-              <p>
-                child1: p:first-of-type
-                <span>span</span>
-              </p>
-              <p>child2: p:nth-of-type(2) color:orange</p>
-              <p>child3: :nth-of-type(3)</p>
-              <p>child4: p:nth-of-type(4n)</p>
-              <p>child5: &:nth-of-type(5)</p>
-              <p>child6: p:nth-of-type(4n)</p>
-              <p>child7: p:last-child</p>
+              <p>p: child1</p>
+              <span>span: child2</span>
+              <span>span: child3</span>
+              <p>p: child4</p>
+              <p>p: child5</p>
+              <span>span: child6</span>
+              <p>p: child7</p>
+              <span>span: child8</span>
+              <p>p: child9</p>
             </div>
           </div>
         </div>
-        <div className={'resultWrapper'}></div>
+        <div className={'resultWrapper'}>
+          <Text as={'h1'} className={'resultTitle'}>
+            first-child와 first-of-type은 똑같이 자식 형제 요소 고르는것같은데 뭐가 달라?
+          </Text>
+          <Text>같은 css 로 사용함! but 차이는 child, type만 다름</Text>
+          <br />
+          <div className={'explainResults'}>
+            <Gist id={'0eea088ab7000b90549f7d2489cfca7a'} />
+          </div>
+        </div>
       </ExperimentLayout>
     </NthSelectorStyled>
   );

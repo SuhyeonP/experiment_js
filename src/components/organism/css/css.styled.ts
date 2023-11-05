@@ -1,147 +1,93 @@
 import styled from '@emotion/styled';
 
-export const NthSelectorStyled = styled.div``;
-
-export const TypeAndChildStyled = styled.div`
-  position: relative;
-
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 1fr 2fr 2fr;
-
+export const NthSelectorStyled = styled.div`
   height: 100%;
 
-  & > div {
-    height: 100%;
-
-    border: 1px dashed blue;
-  }
-
-  .div1 {
-    grid-area: 1/1/2/2;
-  }
-  .div2 {
-    grid-area: 1/2/2/3;
-  }
-  .div3,
-  .div4 {
+  .experiment {
     display: grid;
-    grid-template-rows: 1fr 3fr;
-    .parent1,
-    .parent2 {
-      display: flex;
-      gap: 10px;
-      & > * {
-        width: 50px;
-        height: 50px;
+    grid-template-rows: 1fr 1fr;
+    height: 100%;
+    row-gap: 10px;
+    background-color: #eeeeee;
 
-        border: 1px solid;
+    .exp1,
+    .exp2 {
+      grid-row: span 1;
 
-        text-align: center;
-      }
-    }
-  }
+      background-color: white;
 
-  .div3 {
-    grid-area: 2/1/3/3;
-  }
-  .div4 {
-    grid-area: 3/1/4/3;
-  }
+      & > div {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
 
-  .div1 {
-    .type {
-      p:first-child {
-        color: red;
-      }
+        gap: 5px;
 
-      p:nth-child(2) {
-        color: orange;
-      }
+        & > p,
+        & > span {
+          width: 100px;
+          height: 30px;
 
-      :nth-child(3) {
-        color: yellow;
-      }
+          border: 1px solid #666666;
 
-      p:nth-child(4n) {
-        color: green;
-      }
-
-      &:nth-child(5) {
-        color: blue;
-      }
-
-      p:nth-child(4n + 2) {
-        color: navy;
-      }
-      p:last-child {
-        color: blueviolet;
-      }
-    }
-  }
-
-  .div2 {
-    .child {
-      p:first-of-type {
-        color: red;
-      }
-
-      p:nth-of-type(2) {
-        color: orange;
-      }
-
-      :nth-of-type(3) {
-        color: yellow;
-      }
-
-      p:nth-of-type(4n) {
-        color: green;
-      }
-
-      &:nth-of-type(5) {
-        color: blue;
-      }
-
-      p:nth-of-type(4n) {
-        color: navy;
-      }
-      p:last-of-type {
-        color: blueviolet;
-      }
-    }
-  }
-
-  .div3 {
-    .parent1 {
-      p:first-child {
-        background: lightgreen;
-      }
-      span {
-        :first-of-type {
-          background: lightgreen;
+          text-align: center;
         }
-        :nth-last-child(2) {
-          background: lightblue;
+      }
+      .type {
+        & > p:first-of-type {
+          background-color: darkseagreen;
         }
-        :last-of-type {
-          background: lavender;
+
+        & > span:first-of-type {
+          background-color: lavender;
+        }
+
+        & > p:nth-of-type(3) {
+          background-color: lightblue;
+        }
+
+        & > span:last-of-type {
+          background-color: lightcoral;
+        }
+
+        & > p:last-of-type {
+          background-color: lightpink;
+        }
+      }
+      .child {
+        & > p:first-child {
+          background-color: darkseagreen;
+        }
+
+        & > span:first-child {
+          background-color: lavender;
+        }
+
+        & > p:nth-child(3) {
+          background-color: lightblue;
+        }
+
+        & > span:last-child {
+          background-color: lightcoral;
+        }
+
+        & > p:last-child {
+          background-color: lightpink;
         }
       }
     }
   }
-  .div4 {
-    .parent2 {
-      p {
-        :first-of-type {
-          background: lightgreen;
-        }
-        :nth-last-child(2) {
-          background: lightblue;
-        }
-        :last-of-type {
-          background: lavender;
-        }
-      }
-    }
+
+  .resultWrapper {
+    overflow: auto;
+  }
+
+  .resultTitle {
+    padding-bottom: 20px;
+
+    font-size: 20px;
+    font-weight: bold;
   }
 `;
+
+export const TypeAndChildStyled = styled.div``;

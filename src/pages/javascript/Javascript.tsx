@@ -1,8 +1,8 @@
-import { PageLayout } from '../../components/molecules/layout/PageLayout';
+import { PageLayout } from 'components/molecules/layout/PageLayout';
 import { useState } from 'react';
 import Event from 'components/organism/javascript/Event';
 import StopEvent from 'components/organism/javascript/StopEvent';
-import { PageStyled } from "pages/style/page.styled";
+import { PageStyled } from 'pages/style/page.styled';
 
 const jsTypes = {
   DEFAULT: '선택 해 주세요.',

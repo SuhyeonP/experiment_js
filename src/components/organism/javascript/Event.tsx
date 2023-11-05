@@ -1,7 +1,7 @@
 import { EventStyled } from './event.styled';
 import { ExperimentLayout } from '../../molecules/layout/layout.styled';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Text } from '../../atom/text/Text';
+import { Text } from 'components/atom/text/Text';
 
 // export const EventExplain: IExplainProps = {
 //   title: '이벤트 위임과 캡쳐링, 버블링',
