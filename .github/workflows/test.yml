@@ -13,6 +13,11 @@ jobs: # Job 설정
         with:
           fetch-depth: 0
 
+      - name: Get Commit Message
+        run: |
+          MSG=$(git log --format=%B -n 1 ${{github.event.after}})
+          echo "::set-env name=COMMIT_MESSAGE::${MSG}"
+
       - name: Set up Bun
         uses: oven-sh/setup-bun@v1
         with:
