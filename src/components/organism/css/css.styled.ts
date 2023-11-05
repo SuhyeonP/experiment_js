@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 
+export const NthSelectorStyled = styled.div``;
+
 export const TypeAndChildStyled = styled.div`
   position: relative;
 

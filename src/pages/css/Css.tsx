@@ -1,4 +1,4 @@
-import { TypeAndChild } from '../../components/css/TypeAndChild';
+import { TypeAndChild } from '../../components/organism/css/TypeAndChild';
 import { useMemo, useState } from 'react';
 import Title from '../../components/text/Title';
 import { CssStyled } from 'pages/css/css.styled';
@@ -69,3 +69,18 @@ const CSS = (): JSX.Element => {
 };
 
 export default CSS;
+// <CssStyled>
+//   <PageLayout title={'css'}>
+//     <div style={{ display: 'flex', gap: '4px' }}>
+//       {Object.keys(cssTypes).map(key => (
+//         <button key={key} onClick={() => setCssType(key as CssType)}>
+//           {key}
+//         </button>
+//       ))}
+//     </div>
+//     <br />
+//     <div>{info.explain}</div>
+//     <br />
+//     <div style={{ border: '3px solid green', marginTop: '10px', minHeight: '500px' }}>{info.children}</div>
+//   </PageLayout>
+// </CssStyled>
