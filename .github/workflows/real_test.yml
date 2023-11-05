@@ -1,5 +1,9 @@
 name: run test
-on: push
+on:
+  push:
+    branches: [master]
+  pull_request:
+    types: [opened, synchronize, reopened]
 jobs:
   deploy:
     runs-on: ubuntu-latest
