@@ -24,11 +24,3 @@ jobs: # Job 설정
 
       - name: creates output
         run: sh ./build.sh
-
-      - name: Deploy
-        uses: BetaHuhn/deploy-to-vercel-action@latest
-        with:
-          GITHUB_TOKEN: ${{ secrets.ACTIONFLOW_TOKEN }}
-          VERCEL_TOKEN: ${{ secrets.EXPERIMENT_VERCEL }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
