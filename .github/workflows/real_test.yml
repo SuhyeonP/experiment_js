@@ -15,7 +15,7 @@ jobs:
           GITHUB_COMMIT: ${{ toJson(github.event.head_commit) }}
         run: echo "$GITHUB_COMMIT"
 
-      - name: Dump GitHub context
+      - name: Dump GitHub context 왜 안돼
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "GITHUB_CONTEXT"
