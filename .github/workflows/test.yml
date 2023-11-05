@@ -27,7 +27,7 @@ jobs: # Job 설정
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github.event.pull_request._links.commits) }}
-          GITHUB_COMMIT: ${{ github.event.head_commit.message }}
+          GITHUB_COMMIT: ${{ toJson(github.event.head_commit) }}
         run: echo "$GITHUB_COMMIT"
 
       - name: 실패시
