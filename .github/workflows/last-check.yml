@@ -1,5 +1,7 @@
 name: Are you sure
 on:
+  pull_request:
+    types: [opened, synchronize, reopened]
   workflow_run:
     workflows: ["Build Test", "Deploy CI At Vercel"]
     types:
