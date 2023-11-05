@@ -41,14 +41,6 @@ jobs: # Job 설정
               event: 'REQUEST_CHANGES'
             })
 
-  processing-work:
-    needs: build-test
-    if: ${{ !contains(github.event.head_commit.message, 'merge plz') }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: working now
-        run: echo "not yet!"
-
   auto-merge-check:
     needs: build-test
     if: ${{ contains(github.event.head_commit.message, 'merge plz') }}
@@ -73,3 +65,11 @@ jobs: # Job 설정
               repo: context.repo.repo,
               pull_number: pull_number,
             })
+
+  processing-work:
+    needs: build-test
+    if: ${{ !contains(github.event.head_commit.message, 'merge plz') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: working now
+        run: echo "not yet!"
