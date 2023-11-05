@@ -1,7 +1,9 @@
-name: Test deploy                    # Workflow 이름
+name: Test deploy
 on:
-  - push
-  - pull_request
+  push:
+    branches: [master]
+  pull_request:
+    types: [opened, synchronize, reopened]
 jobs: # Job 설정
   build:
     runs-on: ubuntu-latest
