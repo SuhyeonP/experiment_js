@@ -5,7 +5,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs: # Job 설정
-  build:
+  build-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -39,4 +39,29 @@ jobs: # Job 설정
               pull_number: pull_number,
               body: '마지막 코멘트가 아닙니다!',
               event: 'REQUEST_CHANGES'
+            })
+
+  auto-merge-check:
+    needs: build-test
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, 'merge plz')
+    steps:
+      - run: echo "Merge plz"
+      - name: Approve PR, Merge bot comment
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.ACTIONFLOW_TOKEN }}
+          script: |
+            await github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: ${{ github.event.pull_request.number }},
+              body: '머지하겠습니다!',
+              event: 'REQUEST_CHANGES',
+            })
+            
+            await github.rest.pulls.merge({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: ${{ github.event.pull_request.number }},
             })
