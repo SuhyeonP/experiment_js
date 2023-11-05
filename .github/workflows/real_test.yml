@@ -17,15 +17,15 @@ jobs:
       - name: Dump GitHub context 왜 안돼
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "GITHUB_CONTEXT"
+        run: echo "$GITHUB_CONTEXT"
 
       - name: contain check
         env:
           GITHUB_CONTEXT: ${{ contains(github.event.head_commit.message, 'ci skip') }}
-        run: echo "GITHUB_CONTEXT"
+        run: echo "$GITHUB_CONTEXT"
 
       - name: msg check
         env:
           GITHUB_CONTEXT: ${{ github.event.head_commit.message }}
-        run: echo "GITHUB_CONTEXT"
+        run: echo "$GITHUB_CONTEXT"
 
