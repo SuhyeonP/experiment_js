@@ -3,6 +3,10 @@ import styled from '@emotion/styled';
 export const PageLayoutStyled = styled.div`
   margin: 30px;
 
+  .resetBtn {
+    margin-bottom: 10px;
+  }
+
   .buttons {
     display: flex;
     align-content: flex-start;

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const JavascriptStyled = styled.div`
+export const PageStyled = styled.div`
   .pageChildren {
     display: block;
 

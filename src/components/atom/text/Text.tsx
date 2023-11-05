@@ -5,7 +5,7 @@ import { TextStyled } from './text.styled';
 export type TextProps = {
   as?: ElementType;
   stringToJSX?: boolean;
-} & TChildren<string | string[]> &
+} & TChildren<string | string[] | number | number[] | Array<string | number>> &
   IComponentCommonProps;
 
 export const Text = forwardRef<HTMLParagraphElement, TextProps>(
