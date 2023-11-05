@@ -1,0 +1,28 @@
+name: Test deploy
+on:
+  push:
+    branches: [master]
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs: # Job 설정
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install Dependencies    # 의존 파일 설치
+        run: bun install
+
+      - name: Build                   # React Build
+        run: bun run build
+
+      - name: creates output
+        run: sh ./build.sh
