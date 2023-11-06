@@ -1,5 +1,8 @@
 ### 실험실 of JS
-* 예외 실험 (JS의 throw에 어떤값이든 허용한다. throw로는 error생성자로 만들어진 값을 던지는것이 일반적이지만 필수는 아님.)
+* [js] 이벤트 위임 및 e.preventDefault, e.stopPropagation, e.stopImm.... 관련
+* [js]예외 실험 (JS의 throw에 어떤값이든 허용한다. throw로는 error생성자로 만들어진 값을 던지는것이 일반적이지만 필수는 아님.)
+* [css] nth-child, nth-of-type 차이
+* [react] hook 타이밍들
 
 ## To Do
 * [x] storybook으로 감싸기 -> 레포 변경 하거나 브런치 따로 파거나...?
