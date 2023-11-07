@@ -12,17 +12,23 @@ function PortalProvider({ children }: PortalProviderProps) {
 
   return (
     <PortalContext.Provider value={portalContainerRef}>
-      {children}
       <div
-        id="portal-container"
-        ref={elem => {
-          if (portalContainerRef !== null || elem === null) {
-            return;
-          }
-
-          setPortalContainerRef(elem);
+        onClick={() => {
+          console.log('portal parents');
         }}
-      />
+      >
+        {children}
+        <div
+          id="portal-container"
+          ref={elem => {
+            if (portalContainerRef !== null || elem === null) {
+              return;
+            }
+
+            setPortalContainerRef(elem);
+          }}
+        />
+      </div>
     </PortalContext.Provider>
   );
 }
