@@ -134,3 +134,16 @@ export const EventLoopStyled = styled.div`
   .resultContent {
   }
 `;
+
+export const TimerStyled = styled.div`
+  .inputWrapper {
+    display: flex;
+  }
+
+  .timerInput {
+    & > input {
+      width: 60px;
+      text-align: right;
+    }
+  }
+`;
