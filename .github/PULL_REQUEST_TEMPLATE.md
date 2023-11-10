@@ -24,4 +24,5 @@ Merging this PR will
 ---
 
 ## Next To Do
-* [ ] 체크사항
+
+[//]: # (* [ ] 체크사항)
