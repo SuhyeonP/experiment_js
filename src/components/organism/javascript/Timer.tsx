@@ -2,29 +2,33 @@
 
 import { TimerStyled } from 'components/organism/javascript/event.styled';
 import { ExperimentLayout } from 'components/molecules/layout/layout.styled';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Text } from 'components/atom/text/Text';
-import { ControlNumberInput } from 'components/atom/input/ControlNumberInput';
+import { RefNumberInput } from 'components/atom/input/RefINumberInput';
 
-type TaskType = 'Timer' | 'After_Alert';
 type QueueType = 'Ani' | 'Macro' | 'Both';
 
 export const Timer = (): JSX.Element => {
-  const [processing, setProcessing] = useState<boolean>(false);
+  const minuteRef = React.useRef<HTMLInputElement>(null);
+  const secondRef = React.useRef<HTMLInputElement>(null);
 
-  const [mm, setMM] = useState<number>(0);
-  const [ss, setSS] = useState<number>(0);
+  const aniRef = useRef<number>(0);
+  const macroRef = useRef<number>(0);
 
-  const [aniCount, setAniCount] = useState<number>(0);
-  const [macroCount, setMacroCount] = useState<number>(0);
+  const [macroMM, setMacroMM] = useState<number>(0);
+  const [macroSS, setMacroSS] = useState<number>(0);
+  const [aniMM, setAniMM] = useState<number>(0);
+  const [aniSS, setAniSS] = useState<number>(0);
 
-  const countingDownAni = () => {
-    //
+  const handleCountDownRequestAnimation = () => {
+    const totalTime = 1000 * 60 * Number(minuteRef.current?.value) + 1000 * Number(secondRef.current?.value);
+
+    aniRef.current = requestAnimationFrame(handleCountDownRequestAnimation);
   };
 
-  const handleClickStart = (worker: QueueType, type: TaskType) => {
+  const handleClickStart = (worker: QueueType) => {
     if (worker !== 'Ani') {
-      //
+      requestAnimationFrame(handleCountDownRequestAnimation);
     }
 
     if (worker !== 'Macro') {
@@ -32,35 +36,48 @@ export const Timer = (): JSX.Element => {
     }
   };
 
-  const handleChangeMinute = (event: React.ChangeEvent<HTMLInputElement>, isMinute?: boolean) => {
-    if (isMinute) setMM(Number(event.target.value));
-    else {
-      setSS(Number(event.target.value));
-    }
-  };
+  useEffect(
+    () => () => {
+      cancelAnimationFrame(aniRef.current);
+      clearInterval(macroRef.current);
+    },
+    []
+  );
 
   return (
     <TimerStyled>
       <ExperimentLayout>
         <div className={'experiment'}>
           <div className={'inputWrapper'}>
-            <ControlNumberInput className={'timerInput'} onChange={e => handleChangeMinute(e, true)} value={mm} />
+            <RefNumberInput className={'timerInput'} ref={minuteRef} />
             <Text>:</Text>
-            <ControlNumberInput className={'timerInput'} onChange={e => handleChangeMinute(e, true)} value={ss} />
+            <RefNumberInput className={'timerInput'} ref={secondRef} />
           </div>
           <div className={'countDownWorker'}>
-            <button onClick={() => handleClickStart('Ani', 'Timer')}>interval start</button>
-            <button onClick={() => handleClickStart('Macro', 'Timer')}>interval start</button>
-            <button onClick={() => handleClickStart('Both', 'Timer')}>interval start</button>
-          </div>
-          <div className={'timer'}>
-            <button onClick={() => handleClickStart('Ani', 'After_Alert')}>interval start</button>
-            <button onClick={() => handleClickStart('Macro', 'After_Alert')}>interval start</button>
-            <button onClick={() => handleClickStart('Both', 'After_Alert')}>interval start</button>
+            <button onClick={() => handleClickStart('Ani')}>interval start</button>
+            <button onClick={() => handleClickStart('Macro')}>interval start</button>
+            <button onClick={() => handleClickStart('Both')}>interval start</button>
           </div>
         </div>
         <div className={'resultWrapper'}>
-          <div className={'result'}></div>
+          <div className={'result'}>
+            <div>
+              <Text>Macro</Text>
+              <div>
+                <Text>{macroMM}</Text>
+                <Text>:</Text>
+                <Text>{macroSS}</Text>
+              </div>
+            </div>
+            <div>
+              <Text>Request Animation</Text>
+              <div>
+                <Text>{aniMM}</Text>
+                <Text>:</Text>
+                <Text>{aniSS}</Text>
+              </div>
+            </div>
+          </div>
         </div>
       </ExperimentLayout>
     </TimerStyled>
