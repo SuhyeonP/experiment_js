@@ -24,6 +24,7 @@ export default defineConfig({
       hook: path.resolve(__dirname, 'src/hook'),
       pages: path.resolve(__dirname, 'src/pages'),
       components: path.resolve(__dirname, 'src/components'),
+      utils: path.resolve(__dirname, 'src/utils'),
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
   },
