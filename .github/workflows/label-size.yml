@@ -1,4 +1,4 @@
-name: PR labeler
+name: Pr size labeler
 on:
   pull_request:
     types:
