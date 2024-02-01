@@ -13,6 +13,6 @@ labels:
   - label: 'production'
     branch: '^production/.*'
   - label: 'phase'
-    branch: '^phase-*'
+    branch: '^phase-.*'
 #  - label: "need-to-change-branch-name"
 #    branch: "^(?!^feature/.*$)(?!^bugfix/.*$)(?!^production/.*$)(?!^style/.*$)(?!^docs/.*$)(?!^refact/.*$).*$"
