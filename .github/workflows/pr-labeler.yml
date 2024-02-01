@@ -14,7 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: label-by-branch
-        uses: jimschubert/labeler-action@v1
+        uses: anencore94/labeler@v1.1.0
+        with:
+          config_path: ".github/labeler.yml"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       - name: label-by-size
