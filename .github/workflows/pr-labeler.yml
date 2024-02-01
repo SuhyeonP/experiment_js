@@ -13,12 +13,12 @@ jobs:
   update_release_draft:
     runs-on: ubuntu-latest
     steps:
-      - name: label-by-branch
-        uses: anencore94/labeler@v1.1.0
+      - name: Check Labels
+        id: labeler
+        uses: jimschubert/labeler-action@v1
         with:
-          config_path: ".github/labeler.yml"
-        env:
           GITHUB_TOKEN: "${{ secrets.ACTIONFLOW_TOKEN }}"
+          config_path: ".github/labeler.yml"
       - name: label-by-size
         uses: pascalgn/size-label-action@v0.5.0
         env:
