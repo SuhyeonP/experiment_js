@@ -14,13 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: label-by-branch
-        uses: jimschubert/labeler-action@v1
+        uses: anencore94/labeler@v1.1.0
         with:
-          config_path: ".github/labeler.yaml"
+          config_path: ".github/labeler.yml"
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_TOKEN: "${{ secrets.ACTIONFLOW_TOKEN }}"
       - name: label-by-size
-        uses: pascalgn/size-label-action@v0.4.3
+        uses: pascalgn/size-label-action@v0.5.0
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          IGNORED: "package-lock.json"
+          GITHUB_TOKEN: "${{ secrets.ACTIONFLOW_TOKEN }}"
+          IGNORED: ".*\n!.gitignore\nyarn.lock\ngenerated/**"

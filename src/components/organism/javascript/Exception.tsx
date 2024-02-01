@@ -36,7 +36,7 @@ const Exception = (): JSX.Element => {
         <button onClick={() => handleClickError(true, 'any')}>make error - any</button>
         <button onClick={() => handleClickError(true, 'error')}>make error - error</button>
         <button onClick={handleClickError2}>
-          catch절에는 무엇이 되었건 throw문이 던진 단 한개의 인자만 받을 수 잇다.
+          catch절에는 무엇이 되었건 throw문이 던진 단 한개의 인자만 받을 수 있다.
         </button>
       </div>
       <div>
