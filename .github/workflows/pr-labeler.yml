@@ -20,7 +20,7 @@ jobs:
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       - name: label-by-size
-        uses: pascalgn/size-label-action@v0.4.3
+        uses: pascalgn/size-label-action@v0.5.0
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          IGNORED: "package-lock.json"
+          IGNORED: ".*\n!.gitignore\nyarn.lock\ngenerated/**"
