@@ -17,7 +17,8 @@ jobs:
         id: labeler
         uses: jimschubert/labeler-action@v1
         with:
-          GITHUB_TOKEN: "${{secrets.ACTIONFLOW_TOKEN}}"
+          GITHUB_TOKEN: ${{secrets.ACTIONFLOW_TOKEN}}
+
       - name: label-by-size
         uses: pascalgn/size-label-action@v0.5.0
         env:
