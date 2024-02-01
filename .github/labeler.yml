@@ -1,18 +1,37 @@
-version: 1
+# enable labeler on issues, prs, or both.
+enable:
+  issues: false
+  prs: true
+
+# 레이블을 성공적으로 붙이고 PR에 보낼 코멘트를 설정
+comments:
+  prs: |
+    Labeler has applied any labels matching special text in your title and description.
+    Please review the labels and make any necessary changes.
+
+# 레이블
 labels:
-  - label: 'feature'
-    branch: '^feature/.*'
-  - label: 'bugfix'
-    branch: '^bugfix/.*'
-  - label: 'style'
-    branch: '^style/.*'
-  - label: 'refactoring'
-    branch: '^refact/.*'
-  - label: 'docs'
-    branch: '^docs/.*'
-  - label: 'production'
-    branch: '^production/.*'
-  - label: 'phase'
-    branch: '^phase-.*'
-#  - label: "need-to-change-branch-name"
-#    branch: "^(?!^feature/.*$)(?!^bugfix/.*$)(?!^production/.*$)(?!^style/.*$)(?!^docs/.*$)(?!^refact/.*$).*$"
+  'release':
+    include:
+      - '\bproduction\b'
+  'phase':
+    include:
+      - '\bphase\b'
+  'bug':
+    include:
+      - '\bbugfix\b'
+  'test':
+    include:
+      - '\btest\b'
+  'feature':
+    include:
+      - '\bfeature\b'
+  'documentation':
+    include:
+      - '\bdocs\b'
+  'refactor':
+    include:
+      - '\brefact\b'
+  'style':
+    include:
+      - '\bstyle\b'
