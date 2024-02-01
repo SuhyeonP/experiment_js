@@ -15,8 +15,6 @@ jobs:
     steps:
       - name: label-by-branch
         uses: jimschubert/labeler-action@v1
-        with:
-          config_path: ".github/labeler.yml"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       - name: label-by-size
