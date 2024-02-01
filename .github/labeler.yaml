@@ -1,0 +1,18 @@
+version: 1
+labels:
+  - label: 'feature'
+    branch: '^feature/.*'
+  - label: 'bugfix'
+    branch: '^bugfix/.*'
+  - label: 'style'
+    branch: '^style/.*'
+  - label: 'refactoring'
+    branch: '^refact/.*'
+  - label: 'docs'
+    branch: '^docs/.*'
+  - label: 'production'
+    branch: '^production/.*'
+  - label: 'phase'
+    branch: '^phase-.*'
+#  - label: "need-to-change-branch-name"
+#    branch: "^(?!^feature/.*$)(?!^bugfix/.*$)(?!^production/.*$)(?!^style/.*$)(?!^docs/.*$)(?!^refact/.*$).*$"

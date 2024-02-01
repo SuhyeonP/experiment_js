@@ -1,0 +1,26 @@
+name: PR labeler
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+    branches:
+      - master
+      - phase-* # This will run on any branch that starts with "phase-"
+jobs:
+  update_release_draft:
+    runs-on: ubuntu-latest
+    steps:
+      - name: label-by-branch
+        uses: jimschubert/labeler-action@v1
+        with:
+          config_path: ".github/labeler.yaml"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      - name: label-by-size
+        uses: pascalgn/size-label-action@v0.4.3
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          IGNORED: "package-lock.json"
